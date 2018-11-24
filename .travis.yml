@@ -2,10 +2,13 @@ sudo: required
 dist: xenial
 language: cpp
 compiler: clang
+addons:
+  apt:
+    packages:
+    - cmake
+    - libgtest-dev
 
 script:
-- sudo apt-get update
-- sudo apt-get install -y libgtest-dev
 - builddir=$(pwd)
 - cd /usr/src/gtest
 - sudo cmake .

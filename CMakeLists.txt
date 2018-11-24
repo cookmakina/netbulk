@@ -21,7 +21,7 @@ add_executable(tests src/tests.cpp)
 # Google Test
 find_package(GTest REQUIRED)
 target_include_directories(tests PRIVATE ${GTEST_INCLUDE_DIRS})
-target_link_libraries(tests PRIVATE ${GTEST_LIBRARIES})
+target_link_libraries(tests PRIVATE ${GTEST_LIBRARIES} pthread)
 
 # Poco
 find_package(Poco REQUIRED COMPONENTS Foundation Net)
@@ -31,7 +31,7 @@ message("Poco_LIBRARIES: ${Poco_LIBRARIES}")
 target_link_libraries(bulk_server PRIVATE ${Poco_LIBRARIES})
 target_include_directories(bulk_server PRIVATE ${Poco_INCLUDE_DIRS})
 
-target_link_libraries(bulk_server PRIVATE pthread) # TODO: need?
+target_link_libraries(bulk_server PRIVATE pthread)
 
 #
 set_target_properties(bulk_server PROPERTIES

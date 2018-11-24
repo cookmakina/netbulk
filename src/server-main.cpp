@@ -11,9 +11,6 @@
 #include "async.h"
 #include "arguments.h"
 
-// TODO: check concurrent messages
-// TODO: check previous task feedback
-// TODO: code review
 
 class BulkConnection: public Poco::Net::TCPServerConnection {
 public:
