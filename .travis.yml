@@ -6,6 +6,13 @@ addons:
     packages:
     - cmake
     - libgtest-dev
+    - libpoco-dev
+    - libpocodata9v5
+    - libpococrypto9v5
+    - libpocofoundation9v5
+    - libpoconet9v5
+    - libpoconetssl9v5
+    - libpocoutil9v5
 
 script:
 - builddir=$(pwd)
