@@ -1,0 +1,27 @@
+sudo: required
+dist: xenial
+language: cpp
+compiler: clang
+
+script:
+- sudo apt-get update
+- sudo apt-get install -y libgtest-dev
+- builddir=$(pwd)
+- cd /usr/src/gtest
+- sudo cmake .
+- sudo cmake --build .
+- sudo cp *.a /usr/lib
+- cd $builddir
+- mkdir -p bin
+- cd bin
+- cmake ..
+- cmake --build .
+- cmake --build . --target test
+- cmake --build . --target package
+- cd ..
+
+deploy:
+- provider: script
+  skip_cleanup: true
+  script:
+  - curl -T bin/otus-netbulk-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -uyukigaru:$BINTRAY_API_KEY "https://api.bintray.com/content/yukigaru/otus-bin/otus-netbulk/$TRAVIS_BUILD_NUMBER/otus-netbulk-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
