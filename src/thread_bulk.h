@@ -12,8 +12,8 @@
 
 class ThreadBulk {
 public:
-    explicit ThreadBulk(const std::string& _id) :
-        id(_id),
+    explicit ThreadBulk(std::string _id) :
+        id(std::move(_id)),
         mainThreadId(std::this_thread::get_id())
     {
     }

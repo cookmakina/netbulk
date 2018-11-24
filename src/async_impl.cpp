@@ -168,7 +168,7 @@ void parserThreadProc()
                     consoleThread->sendBulk(bulk);
             };
 
-            CommandBuffer cmdbuf(b.bulkSize, bulkProc);
+            CommandBuffer cmdbuf((unsigned int)b.bulkSize, bulkProc);
             cmdbuf.connect();
 
             contexts.emplace(b.contextId, cmdbuf);

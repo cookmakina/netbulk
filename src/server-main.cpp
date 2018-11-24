@@ -61,8 +61,8 @@ int main(int argc, const char **argv) {
     if (args.count() != 2)
         return 1;
 
-    int port = (int)args.getInt(0);
-    int bulkSize = (int)args.getInt(1);
+    int port = args.getInt(0);
+    int bulkSize = args.getInt(1);
 
     try {
         Poco::Net::ServerSocket ss((Poco::UInt16)port);
